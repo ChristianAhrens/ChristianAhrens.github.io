@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Audio software engineer and senior product designer — C++, JUCE, cross-platform pro audio. Frankfurt am Main.">
+  <meta property="og:title" content="Christian Ahrens">
+  <meta property="og:description" content="Audio software engineer and senior product designer — C++, JUCE, cross-platform pro audio.">
+  <meta property="og:type" content="website">
+  <title>Christian Ahrens</title>
+  <style>
+    :root {
+      --bg:           #0d1117;
+      --surface:      #161b22;
+      --surface-2:    #21262d;
+      --border:       #30363d;
+      --text:         #e6edf3;
+      --text-muted:   #848d97;
+      --accent:       #58a6ff;
+      --accent-dim:   #1f3a5f;
+      --accent-hover: #79b8ff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Navigation ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13, 17, 23, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-links .btn-gh {
+      color: var(--accent);
+      border: 1px solid var(--accent-dim);
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .nav-links .btn-gh:hover { background: var(--accent-dim); color: var(--text); }
+
+    /* ── Main ── */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 5rem;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      display: flex;
+      align-items: flex-start;
+      gap: 2.5rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--border);
+      flex-shrink: 0;
+      display: block;
+      margin: 0;
+    }
+
+    .hero-text h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.45rem;
+      background: linear-gradient(135deg, var(--text) 55%, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+      color: var(--text);
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-sub {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .contact-links a {
+      display: inline-block;
+      padding: 0.35rem 0.9rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.1s;
+    }
+
+    .contact-links .btn-primary {
+      background: var(--accent);
+      color: #0d1117;
+    }
+
+    .contact-links .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .contact-links .btn-secondary {
+      background: var(--surface-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .contact-links .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* ── Headings ── */
+    h2 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-top: 3.25rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: -0.01em;
+    }
+
+    /* ── Body text ── */
+    p { margin-bottom: 1rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    strong { color: var(--text); font-weight: 600; }
+
+    /* ── Skill badges ── */
+    .skill-group { margin-bottom: 1rem; }
+
+    .skill-group-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .skill-badge {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.22rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .skill-badge.hi {
+      border-color: var(--accent-dim);
+      color: var(--accent);
+    }
+
+    /* ── Project grid ── */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 1.25rem 0;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.4rem 1.1rem;
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.15s, transform 0.1s, box-shadow 0.15s;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(88, 166, 255, 0.08);
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .project-card.featured { border-color: var(--accent-dim); }
+
+    .project-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      border: none;
+      margin: 0 0 0.85rem;
+      display: block;
+    }
+
+    .project-name {
+      font-weight: 700;
+      font-size: 0.975rem;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+
+    .project-desc {
+      font-size: 0.845rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      flex: 1;
+      margin-bottom: 1rem;
+    }
+
+    .project-link {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    /* ── Career timeline ── */
+    .timeline {
+      list-style: none;
+      margin: 0.5rem 0;
+      padding: 0;
+    }
+
+    .timeline li {
+      display: grid;
+      grid-template-columns: 145px 1fr;
+      gap: 1rem;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .timeline li:last-child { border-bottom: none; }
+
+    .tl-period {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      padding-top: 0.15rem;
+    }
+
+    .tl-role {
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.1rem;
+    }
+
+    .tl-org { color: var(--text-muted); font-size: 0.82rem; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .footer-inner { max-width: 1000px; margin: 0 auto; }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    /* ── Responsive ── */
+    @media (max-width: 680px) {
+      .hero { flex-direction: column; gap: 1.5rem; }
+      .avatar { width: 88px; height: 88px; }
+      .hero-text h1 { font-size: 2rem; }
+      .project-grid { grid-template-columns: 1fr; }
+      main { padding: 2rem 1rem 3.5rem; }
+      nav { padding: 0 1rem; }
+      .timeline li { grid-template-columns: 1fr; gap: 0.2rem; }
+    }
+
+    @media (min-width: 681px) and (max-width: 900px) {
+      .project-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="nav-brand" href="#">Christian Ahrens</a>
+    <div class="nav-links">
+      <a href="https://github.com/ChristianAhrens" class="btn-gh">GitHub</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero">
+    <img class="avatar" src="assets/img/AvatarImage.jpeg" alt="Christian Ahrens">
+    <div class="hero-text">
+      <h1>Christian Ahrens</h1>
+      <p class="hero-tagline">Audio Software Engineer &middot; Senior Product Designer UI/UX</p>
+      <p class="hero-sub">C++, JUCE, Qt &nbsp;&middot;&nbsp; Pro Audio &nbsp;&middot;&nbsp; Cross-platform &nbsp;&middot;&nbsp; Frankfurt am Main</p>
+      <div class="contact-links">
+        <a class="btn-primary" href="https://github.com/ChristianAhrens">GitHub</a>
+        <a class="btn-secondary" href="mailto:christianahrens@me.com">Email</a>
+      </div>
+    </div>
+  </section>
+
+  <h2>About</h2>
+
+  <p>14 years of engineering experience &mdash; the last eight at <strong>d&amp;b audiotechnik</strong>, a world-leading manufacturer of professional loudspeaker systems and spatial audio technology. Currently leading product design for a next-generation immersive audio creative software suite as <strong>Senior Product Designer UI/UX</strong>, bridging deep C++ engineering with user-centred product thinking in a cross-functional agile team.</p>
+
+  <p>Technical foundation in real-time C++ application development on JUCE and Qt, across macOS, Windows, iOS and Linux. Shipped production software for spatial audio routing, network-controlled audio systems, and interoperability layers spanning OCA/AES70, OSC, MIDI and AVDECC/MILAN &mdash; one of those private projects grew into a commercial d&amp;b product.</p>
+
+  <p>As AI reshapes what software engineering means, the combination of <strong>hands-on technical depth</strong> with full-product ownership &mdash; from concept through UX design to shipped release &mdash; is a rare and increasingly valuable pairing. That is the capability I have been building throughout my career.</p>
+
+  <h2>Expertise</h2>
+
+  <div class="skill-group">
+    <div class="skill-group-label">Engineering</div>
+    <div class="skills">
+      <span class="skill-badge hi">C++</span>
+      <span class="skill-badge hi">JUCE</span>
+      <span class="skill-badge hi">Qt</span>
+      <span class="skill-badge">macOS</span>
+      <span class="skill-badge">Windows</span>
+      <span class="skill-badge">iOS / iPadOS</span>
+      <span class="skill-badge">Linux</span>
+      <span class="skill-badge">CI/CD</span>
+      <span class="skill-badge">Test Automation</span>
+    </div>
+  </div>
+
+  <div class="skill-group">
+    <div class="skill-group-label">Domain</div>
+    <div class="skills">
+      <span class="skill-badge hi">Pro Audio</span>
+      <span class="skill-badge hi">Spatial / Immersive Audio</span>
+      <span class="skill-badge">OCA / AES70</span>
+      <span class="skill-badge">OSC</span>
+      <span class="skill-badge">MIDI</span>
+      <span class="skill-badge">AVDECC / MILAN</span>
+      <span class="skill-badge">AVB</span>
+    </div>
+  </div>
+
+  <div class="skill-group">
+    <div class="skill-group-label">Product &amp; Process</div>
+    <div class="skills">
+      <span class="skill-badge hi">UI/UX Design</span>
+      <span class="skill-badge hi">Product Ownership</span>
+      <span class="skill-badge">SCRUM / Agile</span>
+      <span class="skill-badge">Prototyping</span>
+    </div>
+  </div>
+
+  <h2>Open Source Projects</h2>
+
+  <div class="project-grid">
+
+    <a class="project-card featured" href="https://christianahrens.github.io/Mema/">
+      <img class="project-icon" src="https://raw.githubusercontent.com/ChristianAhrens/Mema/main/Resources/Images/MemaRect.png" alt="Mema">
+      <div class="project-name">Mema</div>
+      <div class="project-desc">Audio matrix router with per-channel metering, muting and crosspoint gain. TCP-based remote monitoring and control from any device on the network. macOS, Windows, Linux, iOS.</div>
+      <span class="project-link">Product Page &#8594;</span>
+    </a>
+
+    <a class="project-card featured" href="https://christianahrens.github.io/Umsci/">
+      <img class="project-icon" src="https://raw.githubusercontent.com/ChristianAhrens/Umsci/main/Resources/Images/UmsciRect.png" alt="Umsci">
+      <div class="project-name">Umsci</div>
+      <div class="project-desc">Upmix scene control for immersive audio rendering. Spatial scene view, per-object positioning, external MIDI and OSC control of upmix parameters. macOS, Windows, Linux, iOS.</div>
+      <span class="project-link">Product Page &#8594;</span>
+    </a>
+
+    <a class="project-card" href="https://github.com/ChristianAhrens/SpaConBridge">
+      <div class="project-name">SpaConBridge</div>
+      <div class="project-desc">Spatial audio control protocol bridge and interoperability layer &mdash; the open-source predecessor that evolved into the commercial <strong>d&amp;b En-Bridge</strong> product.</div>
+      <span class="project-link">GitHub &#8594;</span>
+    </a>
+
+    <a class="project-card" href="https://github.com/ChristianAhrens/NanoAmpControl">
+      <div class="project-name">NanoAmpControl</div>
+      <div class="project-desc">Desktop and mobile control interface for d&amp;b 4-channel amplifiers via AES70/OCP.1 &mdash; from single-amp smartphone use to wide-screen monitoring of large amplifier arrays.</div>
+      <span class="project-link">GitHub &#8594;</span>
+    </a>
+
+    <a class="project-card" href="https://github.com/ChristianAhrens/SurroundFieldMixer">
+      <div class="project-name">SurroundFieldMixer</div>
+      <div class="project-desc">Gain and delay processing matrix for feeding ITU-775 surround sound systems, built with JUCE and made publicly available for experimentation and further extension.</div>
+      <span class="project-link">GitHub &#8594;</span>
+    </a>
+
+    <a class="project-card" href="https://github.com/ChristianAhrens/SpaConSim">
+      <div class="project-name">SpaConSim</div>
+      <div class="project-desc">Minimal OSC response simulator for d&amp;b DS100 Soundscape signal bridge &mdash; a development and integration testing utility for third-party tool development.</div>
+      <span class="project-link">GitHub &#8594;</span>
+    </a>
+
+    <a class="project-card" href="https://github.com/ChristianAhrens/Jumpy">
+      <div class="project-name">Jumpy</div>
+      <div class="project-desc">MIDI TimeCode generator utility for production sync and testing workflows. Manual timecode and framerate selection with MTC SysEx output. iOS TestFlight available.</div>
+      <span class="project-link">GitHub &#8594;</span>
+    </a>
+
+    <a class="project-card" href="https://github.com/ChristianAhrens/Auvi">
+      <div class="project-name">Auvi</div>
+      <div class="project-desc">Audio visualisation experiments with JUCE &mdash; a testbed for real-time level, waveform and spectral display concepts, made publicly available for exploration.</div>
+      <span class="project-link">GitHub &#8594;</span>
+    </a>
+
+  </div>
+
+  <h2>Career</h2>
+
+  <ul class="timeline">
+    <li>
+      <span class="tl-period">2024 &ndash; present</span>
+      <div>
+        <div class="tl-role">Senior Product Designer UI/UX &mdash; Immersive Audio</div>
+        <div class="tl-org">d&amp;b audiotechnik GmbH &amp; Co. KG, Backnang</div>
+      </div>
+    </li>
+    <li>
+      <span class="tl-period">2022 &ndash; 2024</span>
+      <div>
+        <div class="tl-role">Senior Software Engineer</div>
+        <div class="tl-org">d&amp;b audiotechnik GmbH &amp; Co. KG, Backnang</div>
+      </div>
+    </li>
+    <li>
+      <span class="tl-period">2016 &ndash; 2022</span>
+      <div>
+        <div class="tl-role">Software Engineer</div>
+        <div class="tl-org">d&amp;b audiotechnik GmbH &amp; Co. KG, Backnang</div>
+      </div>
+    </li>
+    <li>
+      <span class="tl-period">2010 &ndash; 2016</span>
+      <div>
+        <div class="tl-role">Development Engineer &amp; Technical Product Management</div>
+        <div class="tl-org">Vitronic Dr.-Ing. Stein Bildverarbeitungssysteme GmbH, Wiesbaden</div>
+      </div>
+    </li>
+    <li>
+      <span class="tl-period">2005 &ndash; 2010</span>
+      <div>
+        <div class="tl-role">Dipl.-Ing. (FH) Fernsehtechnik und elektronische Medien</div>
+        <div class="tl-org">Hochschule RheinMain, Wiesbaden</div>
+      </div>
+    </li>
+  </ul>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="https://github.com/ChristianAhrens">GitHub</a>
+      <a href="mailto:christianahrens@me.com">Email</a>
+    </div>
+    <p>Frankfurt am Main &mdash; Open source work done privately; use at your own risk.</p>
+  </div>
+</footer>
+
+</body>
+</html>
