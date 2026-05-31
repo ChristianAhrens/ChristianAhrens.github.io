@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Audio software engineer and senior product designer — C++, JUCE, cross-platform pro audio. Frankfurt am Main.">
+  <meta name="description" content="Senior software engineer and architect with a focus on realtime control software — C++, JUCE, Qt. Senior Product Designer UI/UX. Frankfurt am Main.">
   <meta property="og:title" content="Christian Ahrens">
-  <meta property="og:description" content="Audio software engineer and senior product designer — C++, JUCE, cross-platform pro audio.">
+  <meta property="og:description" content="Senior software engineer and architect with a focus on realtime control software — C++, JUCE, Qt. Senior Product Designer UI/UX.">
   <meta property="og:type" content="website">
   <title>Christian Ahrens</title>
   <style>
@@ -259,6 +259,16 @@
 
     .project-card.featured { border-color: var(--accent-dim); }
 
+    .card-img {
+      display: block;
+      width: calc(100% + 2.8rem);
+      margin: -1.25rem -1.4rem 1rem;
+      border-radius: 9px 9px 0 0;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      height: auto;
+    }
+
     .project-icon {
       width: 44px;
       height: 44px;
@@ -296,7 +306,7 @@
       padding: 0;
     }
 
-    .timeline li {
+    .timeline > li {
       display: grid;
       grid-template-columns: 145px 1fr;
       gap: 1rem;
@@ -305,7 +315,30 @@
       font-size: 0.9rem;
     }
 
-    .timeline li:last-child { border-bottom: none; }
+    .timeline > li:last-child { border-bottom: none; }
+
+    .tl-bullets {
+      list-style: none;
+      margin-top: 0.45rem;
+      padding: 0;
+    }
+
+    .tl-bullets li {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      padding: 0;
+      border: none;
+    }
+
+    .tl-bullets li::before {
+      content: "–";
+      flex-shrink: 0;
+      color: var(--border);
+    }
 
     .tl-period {
       color: var(--text-muted);
@@ -381,8 +414,8 @@
     <img class="avatar" src="assets/img/AvatarImage.jpeg" alt="Christian Ahrens">
     <div class="hero-text">
       <h1>Christian Ahrens</h1>
-      <p class="hero-tagline">Audio Software Engineer &middot; Senior Product Designer UI/UX</p>
-      <p class="hero-sub">C++, JUCE, Qt &nbsp;&middot;&nbsp; Pro Audio &nbsp;&middot;&nbsp; Cross-platform &nbsp;&middot;&nbsp; Frankfurt am Main</p>
+      <p class="hero-tagline">Senior Software Engineer &amp; Architect &middot; Senior Product Designer UI/UX</p>
+      <p class="hero-sub">C++, JUCE, Qt &nbsp;&middot;&nbsp; Realtime Control Software &nbsp;&middot;&nbsp; Cross-platform &nbsp;&middot;&nbsp; Frankfurt am Main</p>
       <div class="contact-links">
         <a class="btn-primary" href="https://github.com/ChristianAhrens">GitHub</a>
         <a class="btn-secondary" href="mailto:christianahrens@me.com">Email</a>
@@ -390,13 +423,77 @@
     </div>
   </section>
 
+  <h2>Open Source Projects</h2>
+
+  <div class="project-grid">
+
+    <a class="project-card featured" href="https://christianahrens.github.io/Mema/">
+      <img class="card-img" src="https://raw.githubusercontent.com/ChristianAhrens/Mema/main/Resources/Documentation/Showreel/Showreel.004.png" alt="Mema in action">
+      <img class="project-icon" src="https://raw.githubusercontent.com/ChristianAhrens/Mema/main/Resources/Images/MemaRect.png" alt="Mema">
+      <div class="project-name">Mema</div>
+      <div class="project-desc">Audio matrix router with per-channel metering, muting and crosspoint gain. TCP-based remote monitoring and control from any device on the network. macOS, Windows, Linux, iOS.</div>
+      <span class="project-link">Product Page &#8594;</span>
+    </a>
+
+    <a class="project-card featured" href="https://christianahrens.github.io/Umsci/">
+      <img class="card-img" src="https://raw.githubusercontent.com/ChristianAhrens/Umsci/main/Resources/Documentation/Showreel/Showreel.002.png" alt="Umsci in action">
+      <img class="project-icon" src="https://raw.githubusercontent.com/ChristianAhrens/Umsci/main/Resources/Images/UmsciRect.png" alt="Umsci">
+      <div class="project-name">Umsci</div>
+      <div class="project-desc">Upmix scene control for immersive audio rendering. Spatial scene view, per-object positioning, external MIDI and OSC control of upmix parameters. macOS, Windows, Linux, iOS.</div>
+      <span class="project-link">Product Page &#8594;</span>
+    </a>
+
+    <a class="project-card" href="https://github.com/ChristianAhrens/SpaConBridge">
+      <img class="project-icon" src="https://raw.githubusercontent.com/ChristianAhrens/SpaConBridge/master/Resources/Images/SpaConBridgeRect.png" alt="SpaConBridge">
+      <div class="project-name">SpaConBridge</div>
+      <div class="project-desc">Spatial audio control protocol bridge and interoperability layer &mdash; the open-source predecessor that evolved into the commercial <strong>d&amp;b En-Bridge</strong> product.</div>
+      <span class="project-link">GitHub &#8594;</span>
+    </a>
+
+    <a class="project-card" href="https://github.com/ChristianAhrens/NanoAmpControl">
+      <img class="project-icon" src="https://raw.githubusercontent.com/ChristianAhrens/NanoAmpControl/main/Resources/Images/NanoAmpControlRect.png" alt="NanoAmpControl">
+      <div class="project-name">NanoAmpControl</div>
+      <div class="project-desc">Desktop and mobile control interface for d&amp;b 4-channel amplifiers via AES70/OCP.1 &mdash; from single-amp smartphone use to wide-screen monitoring of large amplifier arrays.</div>
+      <span class="project-link">GitHub &#8594;</span>
+    </a>
+
+    <a class="project-card" href="https://github.com/ChristianAhrens/SurroundFieldMixer">
+      <img class="project-icon" src="https://raw.githubusercontent.com/ChristianAhrens/SurroundFieldMixer/main/Resources/Images/SurroundFieldMixerRect.png" alt="SurroundFieldMixer">
+      <div class="project-name">SurroundFieldMixer</div>
+      <div class="project-desc">Gain and delay processing matrix for feeding ITU-775 surround sound systems, built with JUCE and made publicly available for experimentation and further extension.</div>
+      <span class="project-link">GitHub &#8594;</span>
+    </a>
+
+    <a class="project-card" href="https://github.com/ChristianAhrens/SpaConSim">
+      <img class="project-icon" src="https://raw.githubusercontent.com/ChristianAhrens/SpaConSim/master/Resources/Images/SpaConSimRect.png" alt="SpaConSim">
+      <div class="project-name">SpaConSim</div>
+      <div class="project-desc">Minimal OSC response simulator for d&amp;b DS100 Soundscape signal bridge &mdash; a development and integration testing utility for third-party tool development.</div>
+      <span class="project-link">GitHub &#8594;</span>
+    </a>
+
+    <a class="project-card" href="https://github.com/ChristianAhrens/Jumpy">
+      <img class="project-icon" src="https://raw.githubusercontent.com/ChristianAhrens/Jumpy/main/Resources/Images/JumpyRect.png" alt="Jumpy">
+      <div class="project-name">Jumpy</div>
+      <div class="project-desc">MIDI TimeCode generator utility for production sync and testing workflows. Manual timecode and framerate selection with MTC SysEx output. iOS TestFlight available.</div>
+      <span class="project-link">GitHub &#8594;</span>
+    </a>
+
+    <a class="project-card" href="https://github.com/ChristianAhrens/Auvi">
+      <img class="project-icon" src="https://raw.githubusercontent.com/ChristianAhrens/Auvi/master/Resources/Images/AuviRect.png" alt="Auvi">
+      <div class="project-name">Auvi</div>
+      <div class="project-desc">Audio visualisation experiments with JUCE &mdash; a testbed for real-time level, waveform and spectral display concepts, made publicly available for exploration.</div>
+      <span class="project-link">GitHub &#8594;</span>
+    </a>
+
+  </div>
+
   <h2>About</h2>
 
-  <p>14 years of engineering experience &mdash; the last eight at <strong>d&amp;b audiotechnik</strong>, a world-leading manufacturer of professional loudspeaker systems and spatial audio technology. Currently leading product design for a next-generation immersive audio creative software suite as <strong>Senior Product Designer UI/UX</strong>, bridging deep C++ engineering with user-centred product thinking in a cross-functional agile team.</p>
+  <p>I build software for pro audio &mdash; control tools, protocol bridges and audio routing utilities, all open source and cross-platform. The projects here have been running alongside my day job for years; a couple of them directly fed into tools that eventually shipped commercially at d&amp;b.</p>
 
-  <p>Technical foundation in real-time C++ application development on JUCE and Qt, across macOS, Windows, iOS and Linux. Shipped production software for spatial audio routing, network-controlled audio systems, and interoperability layers spanning OCA/AES70, OSC, MIDI and AVDECC/MILAN &mdash; one of those private projects grew into a commercial d&amp;b product.</p>
+  <p>By day I am at <strong>d&amp;b audiotechnik</strong>, where I lead <strong>Create.Control</strong> &mdash; a next-generation immersive audio creative software suite &mdash; as <strong>Senior Product Designer UI/UX</strong>. In practice the role straddles product ownership and technical lead: defining requirements, driving architecture decisions, specifying and prototyping UX, and acting as the main link between stakeholders and the external cross-functional team building the product.</p>
 
-  <p>As AI reshapes what software engineering means, the combination of <strong>hands-on technical depth</strong> with full-product ownership &mdash; from concept through UX design to shipped release &mdash; is a rare and increasingly valuable pairing. That is the capability I have been building throughout my career.</p>
+  <p>The pairing of hands-on engineering depth with end-to-end product ownership &mdash; from first concept through design to shipped release &mdash; is the thread running through all of it.</p>
 
   <h2>Expertise</h2>
 
@@ -423,7 +520,6 @@
       <span class="skill-badge">OCA / AES70</span>
       <span class="skill-badge">OSC</span>
       <span class="skill-badge">MIDI</span>
-      <span class="skill-badge">AVDECC / MILAN</span>
       <span class="skill-badge">AVB</span>
     </div>
   </div>
@@ -438,62 +534,6 @@
     </div>
   </div>
 
-  <h2>Open Source Projects</h2>
-
-  <div class="project-grid">
-
-    <a class="project-card featured" href="https://christianahrens.github.io/Mema/">
-      <img class="project-icon" src="https://raw.githubusercontent.com/ChristianAhrens/Mema/main/Resources/Images/MemaRect.png" alt="Mema">
-      <div class="project-name">Mema</div>
-      <div class="project-desc">Audio matrix router with per-channel metering, muting and crosspoint gain. TCP-based remote monitoring and control from any device on the network. macOS, Windows, Linux, iOS.</div>
-      <span class="project-link">Product Page &#8594;</span>
-    </a>
-
-    <a class="project-card featured" href="https://christianahrens.github.io/Umsci/">
-      <img class="project-icon" src="https://raw.githubusercontent.com/ChristianAhrens/Umsci/main/Resources/Images/UmsciRect.png" alt="Umsci">
-      <div class="project-name">Umsci</div>
-      <div class="project-desc">Upmix scene control for immersive audio rendering. Spatial scene view, per-object positioning, external MIDI and OSC control of upmix parameters. macOS, Windows, Linux, iOS.</div>
-      <span class="project-link">Product Page &#8594;</span>
-    </a>
-
-    <a class="project-card" href="https://github.com/ChristianAhrens/SpaConBridge">
-      <div class="project-name">SpaConBridge</div>
-      <div class="project-desc">Spatial audio control protocol bridge and interoperability layer &mdash; the open-source predecessor that evolved into the commercial <strong>d&amp;b En-Bridge</strong> product.</div>
-      <span class="project-link">GitHub &#8594;</span>
-    </a>
-
-    <a class="project-card" href="https://github.com/ChristianAhrens/NanoAmpControl">
-      <div class="project-name">NanoAmpControl</div>
-      <div class="project-desc">Desktop and mobile control interface for d&amp;b 4-channel amplifiers via AES70/OCP.1 &mdash; from single-amp smartphone use to wide-screen monitoring of large amplifier arrays.</div>
-      <span class="project-link">GitHub &#8594;</span>
-    </a>
-
-    <a class="project-card" href="https://github.com/ChristianAhrens/SurroundFieldMixer">
-      <div class="project-name">SurroundFieldMixer</div>
-      <div class="project-desc">Gain and delay processing matrix for feeding ITU-775 surround sound systems, built with JUCE and made publicly available for experimentation and further extension.</div>
-      <span class="project-link">GitHub &#8594;</span>
-    </a>
-
-    <a class="project-card" href="https://github.com/ChristianAhrens/SpaConSim">
-      <div class="project-name">SpaConSim</div>
-      <div class="project-desc">Minimal OSC response simulator for d&amp;b DS100 Soundscape signal bridge &mdash; a development and integration testing utility for third-party tool development.</div>
-      <span class="project-link">GitHub &#8594;</span>
-    </a>
-
-    <a class="project-card" href="https://github.com/ChristianAhrens/Jumpy">
-      <div class="project-name">Jumpy</div>
-      <div class="project-desc">MIDI TimeCode generator utility for production sync and testing workflows. Manual timecode and framerate selection with MTC SysEx output. iOS TestFlight available.</div>
-      <span class="project-link">GitHub &#8594;</span>
-    </a>
-
-    <a class="project-card" href="https://github.com/ChristianAhrens/Auvi">
-      <div class="project-name">Auvi</div>
-      <div class="project-desc">Audio visualisation experiments with JUCE &mdash; a testbed for real-time level, waveform and spectral display concepts, made publicly available for exploration.</div>
-      <span class="project-link">GitHub &#8594;</span>
-    </a>
-
-  </div>
-
   <h2>Career</h2>
 
   <ul class="timeline">
@@ -502,6 +542,11 @@
       <div>
         <div class="tl-role">Senior Product Designer UI/UX &mdash; Immersive Audio</div>
         <div class="tl-org">d&amp;b audiotechnik GmbH &amp; Co. KG, Backnang</div>
+        <ul class="tl-bullets">
+          <li>d&amp;b-side lead for Create.Control, a next-generation immersive audio creative software suite</li>
+          <li>Combining product ownership with technical lead: requirements, architecture decisions, UX specification and prototype validation</li>
+          <li>Primary interface between product management, stakeholders and the external cross-functional development team</li>
+        </ul>
       </div>
     </li>
     <li>
@@ -509,6 +554,10 @@
       <div>
         <div class="tl-role">Senior Software Engineer</div>
         <div class="tl-org">d&amp;b audiotechnik GmbH &amp; Co. KG, Backnang</div>
+        <ul class="tl-bullets">
+          <li>Technical lead for En-Bridge software and related d&amp;b Soundscape tools (C++ / JUCE, Windows / macOS / iOS / Linux)</li>
+          <li>Technical responsibility for third-party network protocol integration (C++ / JUCE)</li>
+        </ul>
       </div>
     </li>
     <li>
@@ -516,6 +565,11 @@
       <div>
         <div class="tl-role">Software Engineer</div>
         <div class="tl-org">d&amp;b audiotechnik GmbH &amp; Co. KG, Backnang</div>
+        <ul class="tl-bullets">
+          <li>d&amp;b system control software suite (R1 and ArrayCalc) development and d&amp;b Soundscape integration (C++ / Qt, Windows / macOS / iOS)</li>
+          <li>Third-party network protocol integration tooling (C++ / JUCE)</li>
+          <li>AES70/OCA control protocol stack extension (C++)</li>
+        </ul>
       </div>
     </li>
     <li>
@@ -523,6 +577,11 @@
       <div>
         <div class="tl-role">Development Engineer &amp; Technical Product Management</div>
         <div class="tl-org">Vitronic Dr.-Ing. Stein Bildverarbeitungssysteme GmbH, Wiesbaden</div>
+        <ul class="tl-bullets">
+          <li>Development of certified 3D measurement systems including measurement software, sensor data processing and graphical control interfaces (C++ / Qt)</li>
+          <li>Steering of hardware, software and industrialisation development for 3D measurement systems in logistics</li>
+          <li>Interfacing between sales, marketing, service and technical departments</li>
+        </ul>
       </div>
     </li>
     <li>
