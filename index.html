@@ -381,6 +381,102 @@
 
     .footer-links a:hover { color: var(--text); }
 
+    /* ── Collections (expandable personal sections) ── */
+    .collection {
+      border-bottom: 1px solid var(--border);
+      margin-top: 0;
+    }
+
+    .collection:last-of-type { border-bottom: none; }
+
+    .collection > summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      padding: 0.75rem 0;
+      user-select: none;
+      transition: color 0.15s;
+    }
+
+    .collection > summary::-webkit-details-marker { display: none; }
+    .collection > summary:hover .collection-title { color: var(--accent); }
+
+    .collection-toggle {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+      display: inline-block;
+    }
+
+    .collection[open] > summary .collection-toggle { transform: rotate(90deg); }
+
+    .collection-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text);
+      transition: color 0.15s;
+    }
+
+    .collection-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      flex: 1;
+    }
+
+    /* ── Timeline photo strip ── */
+    .timeline-strip {
+      display: flex;
+      gap: 0.75rem;
+      overflow-x: auto;
+      padding: 0.25rem 0 1.25rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+
+    .timeline-strip::-webkit-scrollbar { height: 4px; }
+    .timeline-strip::-webkit-scrollbar-track { background: transparent; }
+    .timeline-strip::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+    .ts-item {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.35rem;
+    }
+
+    .ts-img {
+      width: 240px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      display: block;
+      transition: border-color 0.15s, transform 0.1s;
+    }
+
+    .ts-item:hover .ts-img {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .ts-year {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+    }
+
+    .ts-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.3;
+      max-width: 230px;
+    }
+
     /* ── Responsive ── */
     @media (max-width: 680px) {
       .hero { flex-direction: column; gap: 1.5rem; }
@@ -390,6 +486,7 @@
       main { padding: 2rem 1rem 3.5rem; }
       nav { padding: 0 1rem; }
       .timeline li { grid-template-columns: 1fr; gap: 0.2rem; }
+      .ts-img { width: 200px; height: 150px; }
     }
 
     @media (min-width: 681px) and (max-width: 900px) {
@@ -592,6 +689,63 @@
       </div>
     </li>
   </ul>
+
+  <h2>Personal</h2>
+
+  <details class="collection">
+    <summary>
+      <span class="collection-toggle">&#9658;</span>
+      <span class="collection-title">Setups &amp; Workspaces</span>
+      <span class="collection-sub">2005 &ndash; 2026 &middot; homestudio, workstation and rack builds over the years</span>
+    </summary>
+    <div class="timeline-strip">
+      <div class="ts-item">
+        <img class="ts-img" src="assets/DIYSetups/2005_CellarDIYHomestudio.jpg" alt="2005 Cellar DIY Homestudio">
+        <span class="ts-year">2005</span>
+        <span class="ts-label">Cellar DIY Homestudio</span>
+      </div>
+      <div class="ts-item">
+        <img class="ts-img" src="assets/DIYSetups/2009_CellarDIYHomestudio.jpg" alt="2009 Cellar DIY Homestudio">
+        <span class="ts-year">2009</span>
+        <span class="ts-label">Cellar DIY Homestudio</span>
+      </div>
+      <div class="ts-item">
+        <img class="ts-img" src="assets/DIYSetups/2011_AudioWorkstationSetup.JPG" alt="2011 Audio Workstation Setup">
+        <span class="ts-year">2011</span>
+        <span class="ts-label">Audio Workstation</span>
+      </div>
+      <div class="ts-item">
+        <img class="ts-img" src="assets/DIYSetups/2015_ModularRackAndDeskWorkstationSetup.JPG" alt="2015 Modular Rack and Desk Workstation">
+        <span class="ts-year">2015</span>
+        <span class="ts-label">Modular Rack &amp; Desk</span>
+      </div>
+      <div class="ts-item">
+        <img class="ts-img" src="assets/DIYSetups/2020_HomeWorkstationSetup.jpeg" alt="2020 Home Workstation Setup">
+        <span class="ts-year">2020</span>
+        <span class="ts-label">Home Workstation</span>
+      </div>
+      <div class="ts-item">
+        <img class="ts-img" src="assets/DIYSetups/2020_RehearsalroomWorkstationSetup.JPG" alt="2020 Rehearsal Room Workstation">
+        <span class="ts-year">2020</span>
+        <span class="ts-label">Rehearsal Room Workstation</span>
+      </div>
+      <div class="ts-item">
+        <img class="ts-img" src="assets/DIYSetups/2022_CompactedHomeWorkstationSetup.jpeg" alt="2022 Compacted Home Workstation">
+        <span class="ts-year">2022</span>
+        <span class="ts-label">Compacted Home Workstation</span>
+      </div>
+      <div class="ts-item">
+        <img class="ts-img" src="assets/DIYSetups/2024_HomestudioSetup.jpeg" alt="2024 Homestudio Setup">
+        <span class="ts-year">2024</span>
+        <span class="ts-label">Homestudio</span>
+      </div>
+      <div class="ts-item">
+        <img class="ts-img" src="assets/DIYSetups/2026_LOGICStudio.jpeg" alt="2026 LOGIC Studio">
+        <span class="ts-year">2026</span>
+        <span class="ts-label">LOGIC Studio</span>
+      </div>
+    </div>
+  </details>
 
 </main>
 
