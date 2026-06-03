@@ -456,11 +456,41 @@
       border: 1px solid var(--border);
       display: block;
       transition: border-color 0.15s, transform 0.1s;
+      cursor: zoom-in;
     }
 
     .ts-item:hover .ts-img {
       border-color: var(--accent);
       transform: translateY(-1px);
+    }
+
+    /* ── Lightbox ── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+    }
+
+    #lightbox.open { display: flex; }
+
+    #lightbox img {
+      max-width: min(90vw, 1400px);
+      max-height: 90vh;
+      width: auto;
+      height: auto;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      object-fit: contain;
+      margin: 0;
+      cursor: default;
+      display: block;
     }
 
     .ts-year {
@@ -761,6 +791,33 @@
     <p>Frankfurt am Main &mdash; Open source work done privately; use at your own risk.</p>
   </div>
 </footer>
+
+
+<div id="lightbox"><img src="" alt=""></div>
+
+<script>
+(function () {
+  var lb    = document.getElementById('lightbox');
+  var lbImg = lb.querySelector('img');
+
+  document.querySelectorAll('.ts-img').forEach(function (img) {
+    img.addEventListener('click', function (e) {
+      e.stopPropagation();
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lb.classList.add('open');
+    });
+  });
+
+  lb.addEventListener('click', function () {
+    lb.classList.remove('open');
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') lb.classList.remove('open');
+  });
+}());
+</script>
 
 </body>
 </html>
